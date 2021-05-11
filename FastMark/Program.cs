@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using CSharpLib;
+using Microsoft.VisualBasic.Devices;
 using Shortcut = CSharpLib.Shortcut;
 
 namespace FastMark
@@ -42,7 +43,9 @@ namespace FastMark
                 else
                 {
                     Directory.CreateDirectory(ipath);
-                    File.Copy(Process.GetCurrentProcess().MainModule!.FileName!, exename);
+                    var program = Process.GetCurrentProcess().MainModule!.FileName!;
+                    var parentDir = Directory.GetParent(program!);
+                    new Computer().FileSystem.CopyDirectory(parentDir!.FullName, ipath);
                     new Shortcut().CreateShortcutToFile(exename, shortcut, IconLocation: @"C:\windows\system32\shell32.dll,156");
                     TaskDialog.ShowDialog(new TaskDialogPage
                     {

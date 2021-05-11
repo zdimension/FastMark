@@ -1,0 +1,6 @@
+﻿<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Release" type="DotNetFolderPublish" factoryName="Publish to folder">
+    <riderPublish configuration="Release" platform="Any CPU" runtime="Portable" target_folder="$PROJECT_DIR$/FastMark/bin/Release/net5.0-windows/publish" target_framework="net5.0-windows" uuid_high="-4434597364992227870" uuid_low="-8870111889840846518" />
+    <method v="2" />
+  </configuration>
+</component>
