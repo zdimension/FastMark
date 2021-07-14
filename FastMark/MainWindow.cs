@@ -48,13 +48,13 @@ namespace FastMark
                     switch (ext)
                     {
                         case ".PDF":
-                            using (var doc = PdfDocument.Load(filename))
-                            {
-                                images = Enumerable
-                                    .Range(0, doc.PageCount)
-                                    .Select(i => doc.Render(i, 120, 120, PdfRenderFlags.ForPrinting | PdfRenderFlags.CorrectFromDpi))
-                                    .ToArray();
-                            }
+                            var doc = PdfDocument.Load(filename);
+
+                            images = Enumerable
+                                .Range(0, doc.PageCount)
+                                .Select(i => doc.Render(i, 120, 120,
+                                    PdfRenderFlags.ForPrinting | PdfRenderFlags.CorrectFromDpi))
+                                .ToArray();
 
                             break;
                         case ".JPEG" or ".JPG" or ".PNG":
